@@ -6,7 +6,7 @@ This is a simple Spring Boot project which removes stop words from a text file.
 
 There are two resource files:
 1. A file with a collection of stop words, with each line having one stop word.
-2. A file with a sample essay, taken from this [source](https://www.apstudynotes.org/english/sample-essays/definition-success/).
+2. A file with a sample essay was given as an example.
 
 # Building the project
 
