@@ -8,6 +8,9 @@ There are two resource files:
 1. A file with a collection of stop words, with each line having one stop word.
 2. A file with a sample essay(Text1.txt) was given as an example.
 
+    private static final String resourceFilePath = "classpath:englishStopWords.txt";
+    private static final String sampleEssayFilePath = "classpath:sampleEssay.txt";
+
 # Building the project
 
 Once you clone this repo, ```cd``` into the project root directory and run the following command to compile and 
