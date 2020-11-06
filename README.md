@@ -21,5 +21,5 @@ Once you run this command, Maven will build the project and keep it in the ```/t
 root directory. You can run the program using the command below:
 
 ```shell script
-java -jar target/RemoveStopWordsInJavaPOC-1.0-SNAPSHOT.jar
+java -jar target/RemoveStopWords-main-1.0-SNAPSHOT.jar
 ```
