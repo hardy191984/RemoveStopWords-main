@@ -1,4 +1,4 @@
-package com.contactsunny.poc.RemoveStopWordsInJavaPOC;
+package com.hardy191984.poc.RemoveStopWords-main;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
