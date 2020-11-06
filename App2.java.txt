@@ -1,14 +1,26 @@
-import java.util.Scanner;
-public class RemovingAlphabet {
-   public static void main(String args[]) {
-      Scanner sc = new Scanner(System.in);
-      System.out.println("Enter your name: ");
-      String str = sc.nextLine();
-      String[] stringArray = str.split("\\W+");
-      String result = new String();
-      for(int i = 0; i < stringArray.length;i++){
-         result = result+ stringArray[i];
-      }
-      System.out.println("Result: "+result);
-   }
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+public class Main
+{
+    public static void main(String[] args) 
+    {
+        final String regex = "[^a-zA-Z. ]+|(?<=\\d)\\s*(?=\\d)|(?<=\\D)\\s*(?=\\d)|(?<=\\d)\\s*(?=\\D)";
+
+        // Copy the string or text file data into below string variable
+        final String string = "jdklsfj dd ... / adsfdsf/ ...??";
+
+        // Specifry the character or empty string, If you want to replace the non-alphabetical character with other character 
+        final String subst = "";
+
+        final Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);
+        final Matcher matcher = pattern.matcher(string);
+
+        // The substituted value will be contained in the result variable
+        final String result = matcher.replaceAll(subst);
+
+        System.out.println("Substitution result: " + result);
+
+	}
 }
+
+
