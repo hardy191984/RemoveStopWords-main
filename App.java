@@ -37,7 +37,6 @@ public class App implements CommandLineRunner {
             logger.info("Stop words");
             logger.info(englishStopWords.toString());
 
-            // I copied this essay from this place: https://www.apstudynotes.org/english/sample-essays/definition-success/
             List<String> essayLines = getFileContentAsList(sampleEssayFilePath);
 
             List<String> essayWords = splitLinesToWords(essayLines);
