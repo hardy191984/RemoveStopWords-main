@@ -1,82 +1,55 @@
-package com.hardy191984.RemoveStopWords-main;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.util.ResourceUtils;
-
-import java.io.File;
-import java.io.IOException;
+import java.util.*;
+import java.util.regex.Pattern;
+import java.io.*;
+import java.nio.*;
+import java.nio.file.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.nio.file.Paths;
+import java.util.stream.Stream;
 
-@SpringBootApplication
-public class App implements CommandLineRunner {
+public class App {
 
-    private static final Logger logger = LoggerFactory.getLogger(App.class);
+  public static void main(String[] args) {
 
-    private static final String resourceFilePath = "classpath:englishStopWords.txt";
-    private static final String sampleEssayFilePath = "classpath:sampleEssay.txt";
+    try {
+    Scanner stopWordsFile = new Scanner(new File("stopwords.txt"));
+    Scanner textFile = new Scanner(new File("Text1.txt"));
 
-    public static void main(String[] args) {
-        SpringApplication.run(App.class, args);
+    // Create a set for the stop words (a set as it doesn't allow duplicates)
+    Set<String> stopWords = new HashSet<String>();
+    // For each word in the file
+    while (stopWordsFile.hasNext()) {
+        stopWords.add(stopWordsFile.next().trim().toLowerCase());
     }
 
-    @Override
-    public void run(String... args) throws Exception {
+    // Splits strings and stores each word into a list
+    ArrayList<String> words = new ArrayList<String>();
+    while (textFile.hasNext()) {
+        words.add(textFile.next().trim().toLowerCase());
+    }
 
-        try {
+    // Create an empty list (a list because it allows duplicates) 
+    ArrayList<String> listOfWords = new ArrayList<String>();
 
-            List<String> englishStopWords = getFileContentAsList(resourceFilePath);
-
-            logger.info("Stop words");
-            logger.info(englishStopWords.toString());
-
-            List<String> essayLines = getFileContentAsList(sampleEssayFilePath);
-
-            List<String> essayWords = splitLinesToWords(essayLines);
-
-            long wordCountBeforeRemovingStopWords = essayWords.size();
-
-            essayWords.removeAll(englishStopWords);
-
-            long wordCountAfterRemovingStopWords = essayWords.size();
-
-            logger.info("wordCountBeforeRemovingStopWords: " + wordCountBeforeRemovingStopWords);
-            logger.info("wordCountAfterRemovingStopWords: " + wordCountAfterRemovingStopWords);
-
-            logger.info("Essay after removing stop words: ");
-            logger.info(essayWords.toString());
-
-        } catch (IOException e) {
-            e.printStackTrace();
+    // Iterate over the array 
+    for(String word : words) {
+        // Converts current string index to lowercase
+        String toCompare = word.toLowerCase();
+        // If the word isn't a stop word, add to listOfWords list
+        if (!stopWords.contains(toCompare)) {
+            listOfWords.add(word);
         }
     }
 
-    private List<String> splitLinesToWords(List<String> essayLines) {
+    stopWordsFile.close();
+    textFile.close();
 
-        List<String> essayWords = new ArrayList<>();
-
-        for (String line : essayLines) {
-            List<String> words = Arrays.asList(line.split(" "));
-            essayWords.addAll(words);
-        }
-
-        return essayWords;
+    for (String str : listOfWords) {
+        System.out.print(str + " ");
     }
-
-    private List<String> getFileContentAsList(String resourceFilePath) throws IOException {
-
-        File file = ResourceUtils.getFile(resourceFilePath);
-        List<String> lines = Files.readAllLines(file.toPath());
-        lines = lines.stream().map(line -> line.toLowerCase()).collect(Collectors.toList());
-
-        return lines;
-
+    } catch(FileNotFoundException e){
+        e.printStackTrace();
     }
+}
 }
