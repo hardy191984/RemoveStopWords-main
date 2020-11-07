@@ -1,43 +1,33 @@
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
- 
-public class ReadFileToString 
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.stream.Stream;
+
+public class Main
 {
     public static void main(String[] args) 
     {
-        String filePath = "c:/temp/data.txt";
- 
-        System.out.println( readAllBytesJava7( filePath ) );
-    }
- 
-    //Read file content into string with - Files.readAllBytes(Path path)
- 
-    private static String readAllBytesJava7(String filePath) 
-    {
-        String content = "";
- 
+        final String regex = "[^a-zA-Z ]+|(?<=\\d)\\s*(?=\\d)|(?<=\\D)\\s*(?=\\d)|(?<=\\d)\\s*(?=\\D)";
         try
         {
-            content = new String ( Files.readAllBytes( Paths.get(filePath) ) );
-	    final String regex = "[^a-zA-Z. ]+|(?<=\\d)\\s*(?=\\d)|(?<=\\D)\\s*(?=\\d)|(?<=\\d)\\s*(?=\\D)";
-            final String string = content;
-            
-	    final Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);
-	    final Matcher matcher = pattern.matcher(string);
- 
-	    // The substituted value will be contained in the result variable
-	    final String result = matcher.replaceAll(subst);
+        // Copy the string or text file data into below string variable
+        final String string = new String(Files.readAllBytes(Paths.get("Text1.txt")));
+        final String subst = "";
 
-            System.out.println("Substitution result: " + result);
+        final Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);
+        final Matcher matcher = pattern.matcher(string);
+
+        // The substituted value will be contained in the result variable
+        final String result = matcher.replaceAll(subst); 
+        System.out.println("Substitution result: " + result);
+        
         } 
         catch (IOException e) 
         {
             e.printStackTrace();
         }
- 
-        return content;
-    }
+     }
 }
