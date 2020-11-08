@@ -13,6 +13,7 @@ public class App {
   public static void main(String[] args) {
 
     try {
+    // Load the text files(stopwords.txt and Text1.txt)
     Scanner stopWordsFile = new Scanner(new File("stopwords.txt"));
     Scanner textFile = new Scanner(new File("Text1.txt"));
 
