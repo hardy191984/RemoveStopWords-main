@@ -47,6 +47,7 @@ public class App {
     textFile.close();
 
     for (String str : listOfWords) {
+    // Print the final string (list of wrods)
         System.out.print(str + " ");
     }
     } catch(FileNotFoundException e){
