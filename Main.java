@@ -17,7 +17,10 @@ public class Main
         final String string = new String(Files.readAllBytes(Paths.get("Text1.txt")));
         final String subst = "";
 
+	// compiles the given regular expression into a pattern
         final Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);
+	
+	// Create a matcher for the input string 
         final Matcher matcher = pattern.matcher(string);
 
         // The substituted value will be contained in the result variable
