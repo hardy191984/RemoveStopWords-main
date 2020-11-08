@@ -184,4 +184,3 @@ The program is created based on the following consideration:
 10.	Filter out remaining tokens that are not alphabetic.
 11.	Filter out tokens that are stop words.
 12.	Filter out Stop Words (and Pipeline)
-
