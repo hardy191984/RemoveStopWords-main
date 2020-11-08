@@ -53,7 +53,7 @@ public class App
 
         for (String str : listOfWords) 
         {
-        // Print the final string (list of wrods)
+            // Print the final string (list of wrods)
             System.out.print(str + " ");
         }
     } 
