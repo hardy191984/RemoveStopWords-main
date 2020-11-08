@@ -13,24 +13,23 @@ public class Main
         final String regex = "[^a-zA-Z ]+|(?<=\\d)\\s*(?=\\d)|(?<=\\D)\\s*(?=\\d)|(?<=\\d)\\s*(?=\\D)";
         try
         {
-        // Copy the string or text file data into below string variable
-        final String string = new String(Files.readAllBytes(Paths.get("Text1.txt")));
-        final String subst = "";
+		// Copy the string or text file data into below string variable
+		final String string = new String(Files.readAllBytes(Paths.get("Text1.txt")));
+		final String subst = "";
 
-	// compiles the given regular expression into a pattern
-        final Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);
-	
-	// Create a matcher for the input string 
-        final Matcher matcher = pattern.matcher(string);
+		// compiles the given regular expression into a pattern
+		final Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);
 
-        // The substituted value will be contained in the result variable
-        final String result = matcher.replaceAll(subst); 
-        System.out.println("Substitution result: " + result);
-        
+		// Create a matcher for the input string 
+		final Matcher matcher = pattern.matcher(string);
+
+		// The substituted value will be contained in the result variable
+		final String result = matcher.replaceAll(subst); 
+		System.out.println("Substitution result: " + result);
         } 
         catch (IOException e) 
         {
-            e.printStackTrace();
+            	e.printStackTrace();
         }
 
 	}
