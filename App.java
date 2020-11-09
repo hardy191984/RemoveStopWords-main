@@ -14,11 +14,11 @@ public class App
   {
     try 
     {
-        // Load the text files(stopwords.txt and Text1.txt)
+        // 1.  Load the text files(stopwords.txt and Text1.txt)
         Scanner stopWordsFile = new Scanner(new File("stopwords.txt"));
         Scanner textFile = new Scanner(new File("Text1.txt"));
 
-        // Create a set for the stop words (a set as it doesn't allow duplicates)
+        // 2.  Create a set for the stop words (a set as it doesn't allow duplicates)
         Set<String> stopWords = new HashSet<String>();
         // For each word in the file
         while (stopWordsFile.hasNext()) 
@@ -26,17 +26,17 @@ public class App
             stopWords.add(stopWordsFile.next().trim().toLowerCase());
         }
 
-        // Splits strings and stores each word into a list
+        // 3.  Splits strings and stores each word into a list
         ArrayList<String> words = new ArrayList<String>();
         while (textFile.hasNext()) 
         {
             words.add(textFile.next().trim().toLowerCase());
         }
 
-        // Create an empty list (a list because it allows duplicates) 
+        // 4.  Create an empty list (a list because it allows duplicates) 
         ArrayList<String> listOfWords = new ArrayList<String>();
 
-        // Iterate over the array 
+        // 5.  Iterate over the array 
         for(String word : words) 
         {
             // Converts current string index to lowercase
@@ -53,7 +53,7 @@ public class App
 
         for (String str : listOfWords) 
         {
-            // Print the final string (list of wrods)
+            // 6.  Print the final string (list of wrods)
             System.out.print(str + " ");
         }
     } 
