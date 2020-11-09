@@ -17,13 +17,13 @@ public class Main
 		final String string = new String(Files.readAllBytes(Paths.get("Text1.txt")));
 		final String subst = "";
 
-		// compiles the given regular expression into a pattern
+		// compiles the given regular expression into a pattern, Create a pattern from regex 
 		final Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);
 
 		// Create a matcher for the input string 
 		final Matcher matcher = pattern.matcher(string);
 
-		// The substituted value will be contained in the result variable
+		// The substituted value which is an empty string "" will be contained in the result variable
 		final String result = matcher.replaceAll(subst); 
 		System.out.println("Substitution result: " + result);
         } 
