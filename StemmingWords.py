@@ -37,7 +37,7 @@ porter = PorterStemmer()
 stemmed = [porter.stem(word) for word in words]
 print(stemmed)
 
-# 6. Compute the frequency for each stem words into their room form and print out the 20 most words in descending order (do not include the stop words)
+# 6. Compute the frequency for each stem words into their root form and print out the 20 most words in descending order (do not include the stop words)
 import itertools
 all_words_nsw = list(itertools.chain(stemmed))
 import collections
