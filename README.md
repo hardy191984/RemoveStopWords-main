@@ -68,9 +68,9 @@ Note: Your jdk version may be different. Since I have java version 1.8.0_121 ins
 Note: that you should not append the .java extension to the file name while running the program.
 The program is created based on the following consideration (below statement are also   added into Program):
 1.	Copy the string or text file data into below string variable
-2.	Use the Pattern.compile and pattern.matcher to compiles the given regular expression into a pattern.
+2.	Use the Pattern.compile and pattern.matcher to compiles the given regular expression into a pattern and create a pattern from regex
 3.	Create a matcher for the input string
-4.	The substituted value will be contained in the result variable
+4.	The substituted value which is an empty string "" will be contained in the result variable
 5.	Print the final string (result)
 NOTE: I compiled this program through the below online Java Compiler which allows me to select the test files (stopwords.txt and Text1.txt OR Text2.txt) from my computer’s local directory: 
 https://www.onlinegdb.com/online_java_compiler
@@ -95,7 +95,7 @@ Once you have installed the Python on your machine, open the Python app on your 
 
 nltk.download() will call a Graphical Window will appear to choose different corpus and datasets to choose from. Click on Models tab and select punkt and click Download.
 
-2)	Split into Words
+2)	Load the test data file and Split into Words
 
 NLTK provides a function called word_tokenize() for splitting strings into tokens (nominally words).
 
@@ -115,7 +115,6 @@ print(tokens)
 3)	Filter Out Punctuation
 
 We can filter out all tokens that we are not interested in, such as all standalone punctuation.
-
 This can be done by iterating over all tokens and only keeping those tokens that are all alphabetic. Python has the function isalpha() that can be used. For example:
 
 # load data
@@ -177,10 +176,10 @@ porter = PorterStemmer()
 stemmed = [porter.stem(word) for word in words]
 print(stemmed)
 The program is created based on the following consideration:
-6.	Load the raw text.
-7.	Split into tokens.
-8.	Convert to lowercase.
-9.	Remove punctuation from each token.
-10.	Filter out remaining tokens that are not alphabetic.
-11.	Filter out tokens that are stop words.
-12.	Filter out Stop Words (and Pipeline)
+1.	import the nltk package
+2.	Load the data and Split into words and convert to lowercase.
+3.	Remove punctuation from each word and Filter out remaining tokens that are not alphabetic.
+4.	Filter out tokens that are stop words.
+5.	Stemming of words
+6.	Compute the frequency for each stem words into their root form and print out the 20 most words in descending order (do not include the stop words)
+
